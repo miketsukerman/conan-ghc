@@ -24,7 +24,7 @@ If you handle multiple dependencies in your project is better to add a *conanfil
     ghc/8.8.3@fpp/testing
 
     [generators]
-    cmake
+    virtualrunenv
 
 Complete the installation of requirements for your project running:
 
