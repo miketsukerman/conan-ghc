@@ -24,19 +24,28 @@ class GHCBuild(object):
         args = args or []
         command = "ghc -threaded --make Setup" + " ".join(arg for arg in args)   
         with tools.vcvars(self._conanfile.settings):
-            self._run(command)
+            self._conanfile.run(command, run_environment=True)
 
-    def configure(self, args=None):
-        args = args or []
-        command = ".{}Setup configure ".format(os.sep) + " ".join(arg for arg in args)
+    def configure(self, user=None, prefix=None):
+        command = ".{}Setup configure ".format(os.sep)
+        if user:
+            command += "--user "
+        if prefix: 
+            command += "--prefix={} ".format(prefix)            
         with tools.vcvars(self._conanfile.settings):
-            self._run(command)
+            self._conanfile.run(command, run_environment=True)
 
     def build(self, args=None):
         args = args or []
         command = ".{}Setup build ".format(os.sep) + " ".join(arg for arg in args)
         with tools.vcvars(self._conanfile.settings):
-            self._run(command)
+            self._conanfile.run(command, run_environment=True)
+
+    def build(self, args=None):
+        args = args or []
+        command = ".{}Setup install ".format(os.sep) + " ".join(arg for arg in args)
+        with tools.vcvars(self._conanfile.settings):
+            self._conanfile.run(command, run_environment=True)
 
     def _run(self, command):
         try:
