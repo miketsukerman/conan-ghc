@@ -4,11 +4,11 @@ import os, subprocess
 class HelloTestConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators = "virtualrunenv"
-    requires =   "ghc/8.8.3"
+    requires =   "ghc/8.10.1"
 
     def build(self):
         currentDirectory = os.path.dirname(os.path.realpath(__file__))
-        self.run("ghc -o example {}{}example.hs".format(currentDirectory,os.sep))
+        self.run("ghc -o example {}{}example.hs".format(currentDirectory,os.sep),run_environment=True)
 
     def imports(self):
         self.copy("*.dll", dst="bin", src="bin")
