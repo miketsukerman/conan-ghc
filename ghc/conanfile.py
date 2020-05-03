@@ -6,7 +6,7 @@ class GHCConan(ConanFile):
     version = "8.10.1"
     license = "GPL"
     author = "Michael Tsukerman <miketsukerman@gmail.com>"
-    url = "https://github.com/miketsukerman/conan-bnfc"
+    url = "https://github.com/miketsukerman/conan-ghc"
     description = "GHC is a state-of-the-art, open source, compiler and interactive environment for the functional language Haskell."
     topics = ("ghc", "haskell", "compiler")
     settings = "os", "compiler", "build_type", "arch"
